@@ -1,0 +1,25 @@
+Tue Aug 29 04:29:27 PM PDT 2023
+
+Playing with chatGPT to get a volume meter
+
+01 -- pip install numpy and wave
+
+02 -- get an error for stdin
+
+03 -- Yay for streaming stdin:
+    arecord -D plughw:0,7 -f cd | ./03.py
+
+04 -- pysimplegui audio meter!!!
+
+05 -- 
+    pip install PySimpleGUIWeb HTMLParser 
+
+    Getting errors -- no suitable package for markupbase
+
+    What sorta work (after pip uninstall all the things):
+        pip install pysimpleguiweb
+        pip install remi --upgrade
+    which gives errors, but works.
+
+    So, that launches a web browser, but the progress bar is not implemented
+    
