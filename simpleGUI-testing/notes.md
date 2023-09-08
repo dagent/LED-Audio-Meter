@@ -1,4 +1,5 @@
 
+Much of the initial rabbit-hole documentation binge happened here:
 https://realpython.com/pysimplegui-python/
 
 ### Needed for Mint
@@ -11,6 +12,17 @@ https://realpython.com/pysimplegui-python/
 
     # This get's hw.py working!
 ```
+
 https://www.pysimplegui.org/en/latest/call%20reference/#exec-apis
 
-pip install pyalsaaudio # 
+`pip install pyalsaaudio # Will be needed for future uses`
+
+### LED_meter.py
+Cobbled together for stereo VU meter using canvas elements.
+Works(!!!) for both tkinter (default) and webui as a random bar.
+
+Install python modules:
+```
+    pip install pysimpleguiweb
+    pip install remi --upgrade
+```
