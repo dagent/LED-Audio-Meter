@@ -1,0 +1,12 @@
+click==8.0.4
+importlib-metadata==4.8.3
+numpy==1.19.5
+pep517==0.13.0
+pip-tools==6.4.0
+PySimpleGUI==4.60.5
+PySimpleGUIWeb==0.39.0
+remi==2020.3.10
+tomli==1.2.3
+typing_extensions==4.1.1
+Wave==0.0.2
+zipp==3.6.0

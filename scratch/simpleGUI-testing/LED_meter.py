@@ -8,7 +8,7 @@ import random
 
 update_period = 100 # Essentially window timeout (ms)
 maxed_meter_time = 3000 # How long the "red" meter stays lit (ms)
-maxed_counter_init = int( maxed_meter_time / update_period )
+maxed_counter_init = maxed_meter_time // update_period
 
 led_height = 24
 led_width = 48
@@ -20,9 +20,9 @@ https://github.com/PySimpleGUI/PySimpleGUI/blob/master/DemoPrograms/Demo_LED_Ind
 
 def LEDIndicator(key=None, channel="", height=led_height, width=led_width):
     return sg.Graph(canvas_size=(width, height),
-             graph_bottom_left=(0, 0),
-             graph_top_right=(width, height),
-             pad=(0, 0), key=key+channel)
+        graph_bottom_left=(0, 0),
+        graph_top_right=(width, height),
+        pad=(0, 0), key=key+channel)
 
 def SetLED(window, key, color):
     graph = window[key]
@@ -32,18 +32,18 @@ def SetLED(window, key, color):
 
 def LED_bank(channel="" ):
     return [
-          [ LEDIndicator('_max_', channel)],
-          [ LEDIndicator('_80_', channel)],
-          [ LEDIndicator('_40_', channel)],
-          [ LEDIndicator('_20_', channel)],
-          [ LEDIndicator('_10_', channel)],
-          [ LEDIndicator('_5_', channel)],
-          [ LEDIndicator('_0_', channel)],
-          ]
-          
+    [ LEDIndicator('_max_', channel)],
+    [ LEDIndicator('_80_', channel)],
+    [ LEDIndicator('_40_', channel)],
+    [ LEDIndicator('_20_', channel)],
+    [ LEDIndicator('_10_', channel)],
+    [ LEDIndicator('_5_', channel)],
+    [ LEDIndicator('_0_', channel)],
+    ]
+
 LED_banks = { "left": LED_bank("left") ,  "right": LED_bank("right") }
 
-def LED_update(channel, value):
+def LED_update(channel, value):    # sourcery skip: use-fstring-for-concatenation
 
     if value > 90:
         maxed_counter[channel] = maxed_counter_init 
@@ -69,14 +69,14 @@ layout = [
 ]
 
 window = sg.Window('Randomized LED meter', layout,
-       default_element_size=(12, 1), auto_size_text=False, finalize=True)
+    default_element_size=(12, 1), auto_size_text=False, finalize=True)
 
 #i = 0
 maxed_counter = {"left": 0, "right": 0 }
 while True:  # Event Loop
 
     event, value = window.read(timeout=update_period)
-    if event == 'Exit' or event == sg.WIN_CLOSED:
+    if event in ['Exit', sg.WIN_CLOSED]:
         break
     if value is None:
         break
@@ -85,9 +85,7 @@ while True:  # Event Loop
     LED_update("left", random.randint(0, 100))
     LED_update("right", random.randint(0, 100))
 
-
 window.close()
-
 
 '''
 if __name__ == '__main__':

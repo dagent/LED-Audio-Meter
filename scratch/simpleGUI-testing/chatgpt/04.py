@@ -1,4 +1,4 @@
-#!/usr/bin/python3
+#!/bin/env python
 
 import sys
 import PySimpleGUI as sg

@@ -46,3 +46,11 @@ pip install numpy wave
 arecord -D plughw:1,0 -f cd | ./03.py   # Works in scratch/simpleGUI-testing/chatgpt
 ```
 
+Tue 12 Sep 2023 08:42:00 AM PDT
+
+### Get pysimplegui going
+```
+pip install pysimplegui
+pip install pysimpleguiweb
+```
+That all works as bad/good as expected.  Note: for this version of python (3.6.9) it appears doing `pip install remi --upgrade` isn't needed.  But, that was needed for 3.8.10.
