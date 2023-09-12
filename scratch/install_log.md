@@ -28,4 +28,21 @@ libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-d
 For this project, we need to run on an old Linux Mint running 3.6.9.
 `pyenv install 3.6.9`   Which took <2minutes to download and install
 
+```
+pyenv shell 3.6.9
+cd $project_root
+python -m venv venv
+pyenv local 3.6.9
+source venv/bin/activate
+pip install --upgrade pip
+pip install pip-tools
+```
+
+Now running from VScode
+
+###  Install some packages and retest
+```
+pip install numpy wave
+arecord -D plughw:1,0 -f cd | ./03.py   # Works in scratch/simpleGUI-testing/chatgpt
+```
 
