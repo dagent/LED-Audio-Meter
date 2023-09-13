@@ -15,3 +15,5 @@ Currently exploring Python with
 1. pySimpleGui (and pySimpleGuiWeb)
 2. pyalsaaudio
 
+## Mockup
+![Mockup from LED_meter.py](assets/LED_meter-mockup.png)

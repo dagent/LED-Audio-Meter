@@ -19,10 +19,7 @@ def read_audio_frames_from_stdin(frame_size, as_percentage=False):
                 break  # Break when the input stream is closed
             audio_samples = np.frombuffer(audio_data, dtype=np.int16)
             audio_samples = audio_samples.reshape(-1, 2)  # Assuming stereo (2 channels)
-
-            peak_amplitudes = find_peak_amplitude(audio_samples, as_percentage)
-            yield peak_amplitudes
-
+            yield find_peak_amplitude(audio_samples, as_percentage)
         except KeyboardInterrupt:
             break
 
