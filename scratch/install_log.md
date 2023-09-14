@@ -26,7 +26,10 @@ libncursesw5-dev xz-utils tk-dev libxml2-dev libxmlsec1-dev libffi-dev liblzma-d
 ```
 
 For this project, we need to run on an old Linux Mint running 3.6.9.
-`pyenv install 3.6.9`   Which took <2minutes to download and install
+`pyenv install 3.6.9`   Which took <2minutes to download and install. 
+
+Note: on my Mint21 laptop, I need to run `CFLAGS="-O2" pyenv install 3.6.9`
+as from https://github.com/pyenv/pyenv/issues/2141
 
 ```
 pyenv shell 3.6.9
