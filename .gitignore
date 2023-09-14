@@ -1,5 +1,8 @@
+*.code-workspace
+.vscode
 venv
 *.swp
+
 # Compiled source #
 ###################
 *.com

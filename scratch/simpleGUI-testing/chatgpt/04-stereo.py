@@ -1,7 +1,6 @@
 #!/bin/env python
 
 import sys
-import PySimpleGUIWeb as sg
 import PySimpleGUI as sg
 import numpy as np
 
@@ -32,26 +31,26 @@ max_amplitude = 32767  # Default max amplitude for 16-bit PCM
 if len(sys.argv) > 1 and sys.argv[1] == "-f" and len(sys.argv) > 2:
     frame_size = int(sys.argv[2])
 
-# Create a PySimpleGUIWeb window
+# Create a PySimpleGUI window
 layout = [
     [sg.Text('Peak Amplitude Meter', font=('Helvetica', 12))],
-    [sg.ProgressBar(100, orientation='h', size=(20, 20), key='progress')],
-    [sg.Text(size=(30, 1), key='amplitude_text')],  # Add a text element to display peak amplitude values
+    [sg.ProgressBar(100, orientation='h', size=(20, 20), key='progressL')],
+    [sg.ProgressBar(100, orientation='h', size=(20, 20), key='progressR')],
     [sg.Button('Exit')]
 ]
 
-window = sg.Window('Audio Peak Amplitude Meter', layout, web_port=9786, finalize=True)
-progress_bar = window['progress']
-amplitude_text_elem = window['amplitude_text']  # Get the text element
+window = sg.Window('Audio Peak Amplitude Meter', layout, finalize=True)
+progress_barL = window['progressL']
+progress_barR = window['progressR']
 
 # Read and process live audio frames from stdin
 for i, normalized_amplitudes in enumerate(read_audio_frames_from_stdin(frame_size, max_amplitude)):
     # Update the progress bar based on the normalized amplitudes
-    #progress_bar.update_bar(int(normalized_amplitudes.mean()))
+    progress_barL.update_bar(int(normalized_amplitudes[0]))
+    progress_barR.update_bar(int(normalized_amplitudes[1]))
 
-    # Update the text element to display peak amplitude values
-    amplitude_text = f"Channel 1 Peak Amplitude: {normalized_amplitudes[0]:.2f}%, Channel 2 Peak Amplitude: {normalized_amplitudes[1]:.2f}%"
-    amplitude_text_elem.update(amplitude_text)
+    # Print the peak amplitudes to stdout
+    print(f"Frame {i + 1}: Channel 1 Peak Amplitude: {normalized_amplitudes[0]:.2f}%, Channel 2 Peak Amplitude: {normalized_amplitudes[1]:.2f}%")
 
     # Check for events and close the window when the "Exit" button is clicked
     event, values = window.read(timeout=100)
@@ -59,4 +58,3 @@ for i, normalized_amplitudes in enumerate(read_audio_frames_from_stdin(frame_siz
         break
 
 window.close()
-
