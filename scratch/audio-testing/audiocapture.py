@@ -3,9 +3,10 @@
 # Let's see if we can just open an alsa device and print something
 # interesting
 
-import pyaudio, alsaaudio, audioop
+import alsaaudio, audioop
 
-ALSA_DEVICE = "plughw:0,7"  # My laptop's built-in mic
+#ALSA_DEVICE = "plughw:0,7"  # My laptop's built-in mic
+ALSA_DEVICE = "hw:1,0"  # My desktop's usb mic
 
 # Probably the only parameters that count
 SAMPLE_RATE = 44100
@@ -37,7 +38,7 @@ def main():
         if length:
             maxl, maxr = stereo_max(data)
             print(f'{maxl}      {maxr}')
-
+    inp.close()
 
 
 

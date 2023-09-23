@@ -2,7 +2,7 @@
 
 import sys
 import PySimpleGUIWeb as sg
-import PySimpleGUI as sg
+#import PySimpleGUI as sg
 import numpy as np
 
 def find_peak_amplitude(frame):
@@ -55,7 +55,7 @@ for i, normalized_amplitudes in enumerate(read_audio_frames_from_stdin(frame_siz
 
     # Check for events and close the window when the "Exit" button is clicked
     event, values = window.read(timeout=100)
-    if event == sg.WIN_CLOSED or event == 'Exit':
+    if event == sg.WIN_CLOSED or event == 'Exit' or event == None:
         break
 
 window.close()

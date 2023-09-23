@@ -1,8 +1,8 @@
 #! /usr/bin/env python
 
 
-#import PySimpleGUIWeb as sg
-import PySimpleGUI as sg
+import PySimpleGUIWeb as sg
+#import PySimpleGUI as sg
 import time
 import random
 
