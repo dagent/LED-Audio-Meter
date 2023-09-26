@@ -1,0 +1,21 @@
+Sun 24 Sep 2023 05:31:16 PM PDT
+
+Seeing if https://wave.h2o.ai/docs/installation is worth it
+
+cd <dir>
+pyenv install 3:latest  # downloaded 3.11.5
+pyenv shell 3.11.5
+##  OK, 3.11 is bogus, and I'm redoing all of this in 3.10.13
+python -m venv venv
+source venv/bin/activate
+pip install --upgrade pip
+pip install pip-tools
+
+pip install h2o-wave
+
+wave fetch
+
+cd wave
+pip install -r examples/requirements.txt # This took a long time
+
+wave run --no-reload examples.tour # and now to browser!
