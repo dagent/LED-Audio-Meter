@@ -7,13 +7,17 @@ This style is what I'm going for:
 
 ## Goals/milestones
 1. GUI mockup
+    * Done-ish.  Both in pySimpleGui, and as a web page
 2. Basic input from ALSA via STDIN
+    * Exceeded -- audiocapture.py uses alsaaudio
 3. Add capture level slider?
 4. Port somehow to Web-interface
+    * Proof-of-concept now with flask and flask-socketio
 
-Currently exploring Python with
-1. pySimpleGui (and pySimpleGuiWeb)
-2. pyalsaaudio
+Have explored Python with
+1. pySimpleGui (~~pySimpleGuiWeb~~ - Web version pretty bad.)  tK version OK
+2. pyalsaaudio -- This was sorta great, along with built-in audiooop, and will be used.
+3. flask -- have a semiworking version using flask-socketio
 
 ## Mockup
 ![Mockup from LED_meter.py](assets/LED_meter-mockup.png)
