@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang='en' class=''>
+
+<head>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    
+  <meta charset='UTF-8'>
+  <title>Meter Prototype Testing</title>
+  
+<link rel="stylesheet" href="LED_meter.css" >
+
+  <style id="INLINE_SLIDER_STYLESHEET_ID">
+.slidecontainer {
+  width: 100%;
+}
+
+.slider {
+  -webkit-appearance: none;
+  width: 100%;
+  height: 25px;
+  background: #d3d3d3;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: .2s;
+  transition: opacity .2s;
+}
+
+.slider:hover {
+  opacity: 1;
+}
+
+.slider::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+
+.slider::-moz-range-thumb {
+  width: 25px;
+  height: 25px;
+  background: #04AA6D;
+  cursor: pointer;
+}
+  </style>
+
+  
+</head>
+
+<body>
+
+  <div class="LEDmeters" id="LEDmeters">
+    <div class="LEDmeter" id="LEDmeterL"></div>
+    <div class="LEDmeter" id="LEDmeterR"></div>
+  </div>
+
+  <div class="slidecontainer">
+    <input type="range" min="0" max="100" value="50" class="slider" id="myRange1">
+    <p>Value: <span id="demo1"></span></p>
+    <input type="range" min="0" max="100" value="50" class="slider" id="myRange2">
+    <p>Value: <span id="demo2"></span></p>
+  </div>
+
+  <script src="LED_meter.js"> </script>
+
+  <script>
+    var slider1 = document.getElementById("myRange1");
+    var output1 = document.getElementById("demo1");
+    output1.innerHTML = slider1.value;
+    update_LEDmeterL(slider1.value)
+    slider1.oninput = function() {
+        output1.innerHTML = this.value;
+        update_LEDmeterL(this.value)
+    }
+
+    var slider2 = document.getElementById("myRange2");
+    var output2 = document.getElementById("demo2");
+    output2.innerHTML = slider2.value;
+    update_LEDmeterR(slider2.value)
+    slider2.oninput = function() {
+        output2.innerHTML = this.value;
+        update_LEDmeterR(this.value)
+    }
+
+  </script>
+  
+  
+</body>
+
+</html>

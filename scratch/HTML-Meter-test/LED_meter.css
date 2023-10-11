@@ -1,0 +1,81 @@
+/*  <style id="INLINE_METER_STYLESHEET_ID"> */
+    /* paint background of level meter */
+
+.LEDmeters {
+  height: 300px;
+  width: 30px;
+  background-color: #333;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: row;
+  padding: 4px 3px;
+  margin: auto;
+  margin-top: 20px;
+}
+
+/* paint not glowing LEDs */
+.LEDmeter {
+  position: relative; 
+  margin: 0 2px;
+  flex-grow: 1;
+  z-index: 3;
+  background-color: transparent;
+  background-repeat: repeat-y;
+  background-image:linear-gradient(to bottom, #666 3px, transparent 1px);
+  background-size: 100% 4px;
+}
+
+/* paint glowing LEDs */
+.LEDmeter:before {
+  width: 100%;
+  height: 100%;
+  content: ' ';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 1;
+  background-repeat: no-repeat;
+  background-image:linear-gradient(to top, green 0%, yellow 80%, red 100%);
+  background-size: 100% 100%;
+  clip-path: inset(0% 0 0 0); /* switch off leds via clipping */
+  -webkit-clip-path: inset(0% 0 0 0); /* Safari */
+  /* animation: level-animation 500ms alternate infinite; */
+}
+
+@keyframes level-animation {
+  0% {
+     clip-path: inset(0% 0 0 0);
+     -webkit-clip-path: inset(0% 0 0 0);
+  }
+  50% {
+      clip-path: inset(40% 0 0 0);
+     -webkit-clip-path: inset(40% 0 0 0);
+  }
+  100% {
+      clip-path: inset(20% 0 0 0);
+     -webkit-clip-path: inset(20% 0 0 0);
+  }
+}
+
+/* paint gap lines of LEDs */
+.LEDmeter::after {
+  width: 100%;
+  height: 100%;
+  content: ' ';
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  z-index: 2;
+  margin-top: 3px;
+  background-image:linear-gradient(to bottom, #333 1px /* space between leds*/ , transparent 1px);
+  background-repeat: repeat-y;
+  background-size: 100% 4px; /* 4px LED height */
+  background-color: transparent;
+}
+
+/* general CSS */
+body, html {
+  font-family: Arial, sans-serif;
+}
+
+  /*</style>*/
