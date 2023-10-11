@@ -24,3 +24,5 @@ Have explored Python with
 
 ## Flask and CSS functional!
 scratch/flask/WebAlsaMeter.py provides a fully functional ALSA capture peak-meter.  We are now at a 90% mark for what this project should provide!
+
+![Mockup from flask](assets/LED_meter_flask.png)
