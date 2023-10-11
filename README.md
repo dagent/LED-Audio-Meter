@@ -21,3 +21,6 @@ Have explored Python with
 
 ## Mockup
 ![Mockup from LED_meter.py](assets/LED_meter-mockup.png)
+
+## Flask and CSS functional!
+scratch/flask/WebAlsaMeter.py provides a fully functional ALSA capture peak-meter.  We are now at a 90% mark for what this project should provide!
