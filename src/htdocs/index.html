@@ -10,34 +10,35 @@
 <body>
     <h1>Audio Peak Amplitude Meter</h1>
 
-  <div class="LEDmeters" id="LEDmeters">
-    <div class="LEDmeter" id="LEDmeterL"></div>
-    <div class="LEDmeter" id="LEDmeterR"></div>
-  </div>
-
+    <div class="LEDmeters" id="LEDmeters">
+        <div class="LEDmeter" id="LEDmeterL"></div>
+        <div class="LEDmeter" id="LEDmeterR"></div>
+    </div>
     <script src="LED_meter.js"> </script>
 
-    <!-- Your WebSocket code and peak amplitude values can be displayed here -->
-    <div>
-        <p>Channel 1 Peak Amplitude: <span id="channel1Value">0.00%</span></p>
-        <p>Channel 2 Peak Amplitude: <span id="channel2Value">0.00%</span></p>
-    </div>
 
+    <div>
+        <p>Channel 1 Peak Amplitude: <span id="channel1Value">0.00</span>%</p>
+        <p>Channel 2 Peak Amplitude: <span id="channel2Value">0.00</span>%</p>
+    </div>
 
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.1.3/socket.io.js"></script>
     <script>
         // Establish a WebSocket connection to the server
         const socket = io.connect('http://' + document.domain + ':' + location.port);
+        ch1Val = document.getElementById('channel1Value'); 
+        ch2Val = document.getElementById('channel2Value'); 
 
         // Update the peak amplitude values when data is received
         socket.on('peaks', function(data) {
-            //document.getElementById('channel1Value').textContent = data.c1 + '%';
             //document.getElementById('channel2Value').textContent = data.c2 + '%';
             
             // Call the function to update the SVG meter with WebSocket data
             update_LEDmeterL(data.c1);
             update_LEDmeterR(data.c2);
+            ch1Val.textContent = data.c1;
+            ch2Val.textContent = data.c2;
         });
 
         // Handle any WebSocket connection errors

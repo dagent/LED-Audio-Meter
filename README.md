@@ -1,28 +1,20 @@
 # LED-Audio-Meter
+Web based peak level (VU) meter.
 
-I need some way to monitor ALSA capture devices and set the capure level (hopefully with amixer, or pyalsaaudio).
+## Motivation
 
-This style is what I'm going for:
-[Simple LED skin for VU Meter by tedgo on DeviantArt](https://www.deviantart.com/tedgo/art/Simple-LED-skin-for-VU-Meter-556117014)
+I need a way to monitor ALSA capture devices input levels, and I wanted it done in a web browser.  After some exaustive searching, I decided to make my own.
 
-## Goals/milestones
-1. GUI mockup
-    * Done-ish.  Both in pySimpleGui, and as a web page
-2. Basic input from ALSA via STDIN
-    * Exceeded -- audiocapture.py uses alsaaudio
-3. Add capture level slider?
-4. Port somehow to Web-interface
-    * Proof-of-concept now with flask and flask-socketio
-
-Have explored Python with
-1. pySimpleGui (~~pySimpleGuiWeb~~ - Web version pretty bad.)  tK version OK
-2. pyalsaaudio -- This was sorta great, along with built-in audiooop, and will be used.
-3. flask -- have a semiworking version using flask-socketio
-
-## Mockup
-![Mockup from LED_meter.py](assets/LED_meter-mockup.png)
-
-## Flask and CSS functional!
-scratch/flask/WebAlsaMeter.py provides a fully functional ALSA capture peak-meter.  We are now at a 90% mark for what this project should provide!
+Here's what I've got working in `src/`:
 
 ![Mockup from flask](assets/LED_meter_flask.png)
+
+## Requirements
+Stilll getting requirements.txt in order and getting rid of devel cruft, but basically:
+* flask
+* flask-socketio
+* pyalsalaudio
+* audioop - so useful, but [deprecated beginning 3.13](https://docs.python.org/3/library/audioop.html)
+
+## Python version
+Development for this was initiated on a box running Linux Mint 19.3 (for which some hardware has specific drivers), and which has Python 3.6.9 installed.  I've also used it on a Python 3.8 system with no problem.
